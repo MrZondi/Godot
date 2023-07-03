@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://c085h75pi4e73"]
+
+[ext_resource type="Script" path="res://Levels/area_2d.gd" id="1_5vqjs"]
+[ext_resource type="Texture2D" uid="uid://cki66tmd17as2" path="res://Art/Sprout Lands - Sprites - Basic pack/coin/gold_1.png" id="1_eovnb"]
+[ext_resource type="Texture2D" uid="uid://4dvguts4tvpg" path="res://Art/Sprout Lands - Sprites - Basic pack/coin/gold_2.png" id="2_7p1ve"]
+[ext_resource type="Texture2D" uid="uid://b84jcekfpuqvw" path="res://Art/Sprout Lands - Sprites - Basic pack/coin/gold_3.png" id="3_mff30"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tl11q"]
+radius = 43.566
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jntlg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_eovnb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7p1ve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mff30")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="COin" type="Area2D"]
+script = ExtResource("1_5vqjs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tl11q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+sprite_frames = SubResource("SpriteFrames_jntlg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
